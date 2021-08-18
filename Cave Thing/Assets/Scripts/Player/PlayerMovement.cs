@@ -15,10 +15,11 @@ public class PlayerMovement : MonoBehaviour
 
     //  variables describing the players state
     private bool canMoveHoriz;
-    public float accelerationModifier;
+    //public float accelerationModifier;
     private bool grounded;
     private bool touchingWall;
     bool grabbingLedge;
+    bool restingOnLedge;    //  whether the hand has actually touched the ledge
     public bool facingLeft;
 
     //  jump shit
@@ -36,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
     public CheckHand handScript;
     public Rigidbody2D rb;
     public GameObject Sensors;
-    public Animation playerAnimation;
+    public Animator playerAnimator;
 
     //  Start is called before the first frame update
     void Start()
@@ -48,7 +49,6 @@ public class PlayerMovement : MonoBehaviour
         jumpHeld = false;
         grabbingLedge = false;
         facingLeft = true;
-        //currentState = PlayerState.IDLE;
     }
 
     // Update is called once per frame
@@ -135,13 +135,12 @@ public class PlayerMovement : MonoBehaviour
         if (rb.velocity.y < -0 || !jumpHeld)
             rb.velocity += new Vector2(0, 0 - fallMultiplier);
     }
-
-    //  
+  
     private void moveLeftRight()
     {
         //  this stuff is still being worked on
         float targetSpeed = horizInput * speed;
-        float acceleration = accelerationModifier * targetSpeed;
+        //float acceleration = accelerationModifier * targetSpeed;
 
         if (canMoveHoriz)
         {
@@ -151,11 +150,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void updateAnimationVriables()
     {
+        playerAnimator.SetFloat("horizVel", rb.velocity.x);
+        playerAnimator.SetFloat("verticalVel", rb.velocity.y);
 
+        playerAnimator.SetBool("facingLeft", facingLeft);
+        playerAnimator.SetBool("grounded", grounded);
+        playerAnimator.SetBool("grabbingLedge", grabbingLedge);
     }
 
-    //GETTERS AND SETTERS
-
+    //  GETTERS AND SETTERS
     public void setGrounded(bool grounded)
     {
         this.grounded = grounded;
