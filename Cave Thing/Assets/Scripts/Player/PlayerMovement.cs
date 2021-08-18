@@ -4,47 +4,49 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    //  attributes that affect how the player moves
     public float speed;
     public float airSpeed;
     public float maxAirSpeed;
     public float jumpForce;
     public float horizLedgeJumpForce;
-    public float vertLedgeJumpoForce;
-    public float fallMultiplier;
+    public float vertLedgeJumpForce;
+    public float fallMultiplier;    
 
-    public Rigidbody2D rb;
-    //private PlayerState currentState;
-
+    //  variables describing the players state
     private bool canMoveHoriz;
-    private float horizInput;
-    private float vertInput;
     public float accelerationModifier;
+    private bool grounded;
+    private bool touchingWall;
+    bool grabbingLedge;
+    public bool facingLeft;
 
+    //  jump shit
     private float jumpTimer;
     public float jumpRefreshTime;
     bool jumpHeld;
 
-    private bool grounded;
-    private bool touchingLeftWall;
-    private bool touchingRightWall;
-    public CheckLeftHand leftHandScript;
-    bool grabbingLeft;
-    bool grabbingRight;
+    //  input
+    private float horizInput;
+    private float horizInputRaw;
+    private float vertInput;
+    private float vertInputRaw;
 
-    public bool facingLeft;
+    //  outside resources
+    public CheckHand handScript;
+    public Rigidbody2D rb;
     public GameObject Sensors;
+    public Animation playerAnimation;
 
-    // Start is called before the first frame update
+    //  Start is called before the first frame update
     void Start()
     {
         canMoveHoriz = true;
-        touchingLeftWall = false;
-        touchingRightWall = false;
+        touchingWall = false;
         horizInput = 0;
         jumpTimer = 0;
         jumpHeld = false;
-        grabbingLeft = false;
-        grabbingRight = false;
+        grabbingLedge = false;
         facingLeft = true;
         //currentState = PlayerState.IDLE;
     }
@@ -52,8 +54,12 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //  get input
         vertInput = Input.GetAxis("Vertical");
-        horizInput = Input.GetAxisRaw("Horizontal");
+        vertInputRaw = Input.GetAxisRaw("Vertical");
+
+        horizInput = Input.GetAxis("Horizontal");
+        horizInputRaw = Input.GetAxisRaw("Horizontal");
 
         if (Input.GetButtonDown("Jump"))
             jumpTimer = 0;
@@ -62,8 +68,16 @@ public class PlayerMovement : MonoBehaviour
         jumpHeld = Input.GetButton("Jump");
 
         updateFacing();
+        updateAnimationVriables();
     }
 
+    private void FixedUpdate()
+    {
+        moveLeftRight();
+        jump();
+    }
+
+    //  flip sensors and colliders depending on the direction the player is facing
     private void updateFacing()
     {
         if (rb.velocity.x > 0.1)
@@ -77,13 +91,6 @@ public class PlayerMovement : MonoBehaviour
             Sensors.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
 
-       
-    }
-
-    private void FixedUpdate()
-    {
-        moveLeftRight();
-        jump();
     }
 
     private void jump()
@@ -97,38 +104,42 @@ public class PlayerMovement : MonoBehaviour
 
         if (jumpPressed)
         {
-            if (!grabbingLeft && !grabbingRight)
+            if (!grabbingLedge)
             {
                 if (grounded)
                 {
-
+                    //  if not grabbing anything and on the ground - jump normally
                     rb.velocity = new Vector2(rb.velocity.x, Mathf.Max(rb.velocity.y, jumpForce));
                 }
             }
             else
             {
-                if (vertInput < 0)
+                //  if pressing down, jumping and grabbing a ledge then drop through ledge
+                if (vertInputRaw < 0)
                 {
-                    if (grabbingLeft)
+                    if (grabbingLedge)
                     {
-                        leftHandScript.setIsTrigger(true);
-                        leftHandScript.setHandTouchingWall(true);
+                        handScript.setIsTrigger(true);
+                        handScript.setHandTouchingWall(true);
+                        canMoveHoriz = true;
                     }
                 }
-                else
+                else//  if grabbing ledge and jumping then jump off ledge
                 {
-                    rb.velocity = new Vector2(horizInput * horizLedgeJumpForce, Mathf.Max(rb.velocity.y, vertLedgeJumpoForce));
+                    rb.velocity = new Vector2(horizInput * horizLedgeJumpForce, Mathf.Max(rb.velocity.y, vertLedgeJumpForce));
                 }
-                //hangingFromLedge = false;
             }
         }
 
+        //  if not holding jump, fall faster
         if (rb.velocity.y < -0 || !jumpHeld)
             rb.velocity += new Vector2(0, 0 - fallMultiplier);
     }
 
+    //  
     private void moveLeftRight()
     {
+        //  this stuff is still being worked on
         float targetSpeed = horizInput * speed;
         float acceleration = accelerationModifier * targetSpeed;
 
@@ -138,12 +149,9 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private enum PlayerState
+    private void updateAnimationVriables()
     {
-        IDLE,
-        RUNNING,
-        AIRBORNE,
-        CLIMBING
+
     }
 
     //GETTERS AND SETTERS
@@ -155,12 +163,12 @@ public class PlayerMovement : MonoBehaviour
 
     public void setTouchingLeftWall(bool touching)
     {
-        touchingLeftWall = touching;
+        touchingWall = touching;
     }
   
     public bool getTouchingLeftWall()
     {
-        return touchingLeftWall;
+        return touchingWall;
     }
 
     public void setCanMoveHoriz(bool canMoveHoriz)
@@ -168,9 +176,9 @@ public class PlayerMovement : MonoBehaviour
         this.canMoveHoriz = canMoveHoriz;
     }
 
-    public void setGrabbingLeft(bool grabbingLeft)
+    public void setGrabbingLedge(bool grabbingLeft)
     {
-        this.grabbingLeft = grabbingLeft;
+        this.grabbingLedge = grabbingLeft;
         canMoveHoriz = !grabbingLeft;
     }
 }

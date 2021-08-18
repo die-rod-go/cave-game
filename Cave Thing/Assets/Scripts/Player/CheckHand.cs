@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CheckLeftHand : MonoBehaviour
+public class CheckHand : MonoBehaviour
 {
     public bool handTouchingWall;
     public PlayerMovement playerMovement;
@@ -15,18 +15,23 @@ public class CheckLeftHand : MonoBehaviour
         hand.isTrigger = true;
     }
 
-    // Update is called once per frame
+    // Update is called once per frame    
     void Update()
+    {
+        updateHand();
+    }
+    
+    private void updateHand()// if the wall sensor is touching a wall and the "hand" is not touching a wall then turn the "hand" solid    private void updateHand()
     {
         if (playerMovement.getTouchingLeftWall() && !handTouchingWall)
         {
             hand.isTrigger = false;
-            playerMovement.setGrabbingLeft(true);
+            playerMovement.setGrabbingLedge(true);
         }
-        else if(!hand.isTrigger)
+        else if (!hand.isTrigger)
         {
             hand.isTrigger = true;
-            playerMovement.setGrabbingLeft(false);
+            playerMovement.setGrabbingLedge(false);
         }
     }
 
