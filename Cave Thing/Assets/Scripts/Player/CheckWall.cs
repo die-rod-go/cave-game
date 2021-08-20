@@ -20,7 +20,8 @@ public class CheckWall : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        playerMovement.setTouchingLeftWall(true);
+        if(playerMovement.rb.velocity.y < 0)
+            playerMovement.setTouchingLeftWall(true);
     }
 
     private void OnTriggerExit2D(Collider2D collision)

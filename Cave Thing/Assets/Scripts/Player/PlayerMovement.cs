@@ -121,6 +121,7 @@ public class PlayerMovement : MonoBehaviour
                     {
                         handScript.setIsTrigger(true);
                         handScript.setHandTouchingWall(true);
+                        grabbingLedge = false;
                         canMoveHoriz = true;
                     }
                 }
@@ -181,7 +182,17 @@ public class PlayerMovement : MonoBehaviour
 
     public void setGrabbingLedge(bool grabbingLeft)
     {
+        float ledgeSnap = 3;
+        int direction = 0;
+
+        if (facingLeft)
+            direction = -1;
+        else if (facingLeft)
+            direction = 1;
+    
+
         this.grabbingLedge = grabbingLeft;
         canMoveHoriz = !grabbingLeft;
+        rb.velocity = new Vector2(ledgeSnap * direction, rb.velocity.y);
     }
 }
