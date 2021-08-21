@@ -31,7 +31,7 @@ public class JumpParticleEmitter : MonoBehaviour
         }
         else
         {
-            updateFacing();
+            //updateFacing();
             dust.Stop();
         }            
     }
@@ -41,7 +41,7 @@ public class JumpParticleEmitter : MonoBehaviour
         if (flippedCorrect != player.getFacingLeft())
         {
             Vector3 localScale = dust.transform.localScale;
-            localScale.x *= 1;
+            localScale.x *= -1;
             flippedCorrect = player.getFacingLeft();
 
             dust.transform.localScale = localScale;
