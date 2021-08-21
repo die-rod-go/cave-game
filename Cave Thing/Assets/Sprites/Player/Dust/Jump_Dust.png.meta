@@ -1,13 +1,25 @@
 fileFormatVersion: 2
-guid: ea79e221cc4bd004eb6b9b25d8455a98
+guid: 5da73033c0565eb43bbae89e92a2585b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7209422116472226972
-    second: Fall_Fast_Right_0
+      213: -3994465220981185343
+    second: Jump_Dust_0
   - first:
-      213: -4738159493664040969
-    second: Fall_Fast_Right_1
+      213: 3106120390983174214
+    second: Jump_Dust_1
+  - first:
+      213: 3213692185339036603
+    second: Jump_Dust_2
+  - first:
+      213: 1463891019646581583
+    second: Jump_Dust_3
+  - first:
+      213: 5263792856370556089
+    second: Jump_Dust_4
+  - first:
+      213: -569856789638357609
+    second: Jump_Dust_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -97,7 +109,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Fall_Fast_Right_0
+      name: Jump_Dust_0
       rect:
         serializedVersion: 2
         x: 0
@@ -111,14 +123,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c940c20c7330d0460800000000000000
-      internalID: 7209422116472226972
+      spriteID: 1c4a3cb8b0fc098c0800000000000000
+      internalID: -3994465220981185343
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fall_Fast_Right_1
+      name: Jump_Dust_1
       rect:
         serializedVersion: 2
         x: 32
@@ -132,8 +144,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f7920b5b0dae3eb0800000000000000
-      internalID: -4738159493664040969
+      spriteID: 6484626e9082b1b20800000000000000
+      internalID: 3106120390983174214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jump_Dust_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb305940404599c20800000000000000
+      internalID: 3213692185339036603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jump_Dust_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4b3be75029c05410800000000000000
+      internalID: 1463891019646581583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jump_Dust_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bca43fc6bfbc0940800000000000000
+      internalID: 5263792856370556089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jump_Dust_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79dd2c0e4467718f0800000000000000
+      internalID: -569856789638357609
       vertices: []
       indices: 
       edges: []

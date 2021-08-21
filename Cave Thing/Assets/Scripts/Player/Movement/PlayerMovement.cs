@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     bool grabbingLedge;
     bool restingOnLedge;    //  whether the hand has actually touched the ledge
     public bool facingLeft;
+    public bool jumpingNormal; //  used by particle emitters
 
     //  jump shit
     private float jumpTimer;
@@ -49,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
         jumpHeld = false;
         grabbingLedge = false;
         facingLeft = true;
+        jumpingNormal = false;
     }
 
     // Update is called once per frame
@@ -110,6 +112,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     //  if not grabbing anything and on the ground - jump normally
                     rb.velocity = new Vector2(rb.velocity.x, Mathf.Max(rb.velocity.y, jumpForce));
+                    jumpingNormal = true;
                 }
             }
             else
@@ -165,6 +168,11 @@ public class PlayerMovement : MonoBehaviour
         this.grounded = grounded;
     }
 
+    public bool getGrounded()
+    {
+        return grounded;
+    }
+
     public void setTouchingLeftWall(bool touching)
     {
         touchingWall = touching;
@@ -175,9 +183,24 @@ public class PlayerMovement : MonoBehaviour
         return touchingWall;
     }
 
+    public bool getJumpingNormal()
+    {
+        return jumpingNormal;
+    }
+
+    public void setJumpingNormal(bool jumpingNormal)
+    {
+        this.jumpingNormal = jumpingNormal;
+    }
+
     public void setCanMoveHoriz(bool canMoveHoriz)
     {
         this.canMoveHoriz = canMoveHoriz;
+    }
+
+    public bool getFacingLeft()
+    {
+        return facingLeft;
     }
 
     public void setGrabbingLedge(bool grabbingLeft)
