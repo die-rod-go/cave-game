@@ -17,7 +17,7 @@ public class JumpParticleEmitter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        updateFacing();
+        //updateFacing();
         jumpParticles();
     }
 
@@ -25,7 +25,7 @@ public class JumpParticleEmitter : MonoBehaviour
     {      
         if (player.getJumpingNormal())
         {
-            updateFacing();
+            //updateFacing();
             dust.Emit(1);
             player.setJumpingNormal(false);
         }

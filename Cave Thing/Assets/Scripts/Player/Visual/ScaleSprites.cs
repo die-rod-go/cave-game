@@ -23,7 +23,7 @@ public class ScaleSprites : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        updateScale();
+        //updateScale();
     }
 
     private void updateScale()
