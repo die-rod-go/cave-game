@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JumpParticleEmitter : MonoBehaviour
+public class JumpListener : MonoBehaviour
 {
     public PlayerMovement player;
     public ParticleSystem dust;
     private bool flippedCorrect;
+
+    public PlayerSounds sounds;
 
     // Start is called before the first frame update
     void Start()
@@ -22,18 +24,34 @@ public class JumpParticleEmitter : MonoBehaviour
     }
 
     void jumpParticles()
-    {      
+    {
         if (player.getJumpingNormal())
         {
-            //updateFacing();
-            dust.Emit(1);
-            player.setJumpingNormal(false);
+            normalJump();
+        }
+        else if (player.getWallJumping())
+        {
+            wallJump();
         }
         else
         {
             //updateFacing();
             dust.Stop();
         }            
+    }
+
+    void normalJump()
+    {
+        //updateFacing();
+        dust.Emit(1);
+        player.setJumpingNormal(false);
+        sounds.playJumpSound();
+    }
+
+    void wallJump()
+    {
+        player.setWallJumping(false);
+        sounds.playJumpSound();
     }
 
     void updateFacing()

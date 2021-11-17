@@ -35,7 +35,7 @@ public class PlayerSounds : MonoBehaviour
         playerSoundSource.Play();
     }
 
-    private void playJumpSound()
+    public void playJumpSound()
     {
         playerSoundSource.clip = jumpSound;
         playerSoundSource.Play();

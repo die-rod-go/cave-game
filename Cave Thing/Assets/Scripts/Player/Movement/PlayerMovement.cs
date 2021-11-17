@@ -18,10 +18,11 @@ public class PlayerMovement : MonoBehaviour
     //public float accelerationModifier;
     private bool grounded;
     private bool touchingWall;
-    bool grabbingLedge;
-    bool restingOnLedge;    //  whether the hand has actually touched the ledge
+    private bool grabbingLedge;
+    private bool restingOnLedge;    //  whether the hand has actually touched the ledge
     public bool facingLeft;
-    public bool jumpingNormal; //  used by particle emitters
+    private bool jumpingNormal; //  used by particle emitters
+    private bool wallJumping;
 
     //  jump shit
     private float jumpTimer;
@@ -131,6 +132,7 @@ public class PlayerMovement : MonoBehaviour
                 else//  if grabbing ledge and jumping then jump off ledge
                 {
                     rb.velocity = new Vector2(horizInput * horizLedgeJumpForce, Mathf.Max(rb.velocity.y, vertLedgeJumpForce));
+                    wallJumping = true;
                 }
             }
         }
@@ -191,6 +193,16 @@ public class PlayerMovement : MonoBehaviour
     public void setJumpingNormal(bool jumpingNormal)
     {
         this.jumpingNormal = jumpingNormal;
+    }
+
+    public bool getWallJumping()
+    {
+        return wallJumping;
+    }
+
+    public void setWallJumping(bool wallJumping)
+    {
+        this.wallJumping = wallJumping;
     }
 
     public void setCanMoveHoriz(bool canMoveHoriz)
