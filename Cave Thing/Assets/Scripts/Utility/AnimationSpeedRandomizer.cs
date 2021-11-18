@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class AnimationSpeedRandomizer : MonoBehaviour
 {
-    public float minSpeed;
-    public float maxSpeed;
+    [Range(0.0f, 5.0f)]
+    public float minSpeed, maxSpeed;
+
+    [Range(0.0f, 5.0f)]
     public float speedChange;
 
     Animator animator;

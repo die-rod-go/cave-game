@@ -113,8 +113,6 @@ public class FlyRandom : MonoBehaviour
             if (h.collider.CompareTag("Ground"))
                 tooHigh = false;
         }
-
-        Debug.Log(tooHigh);
         if (tooHigh)
             correctHeight();
     }
@@ -138,34 +136,19 @@ public class FlyRandom : MonoBehaviour
     private void checkSurroundings()
     {
         if (checkDirection(desiredDir))
-        {
             chooseDir();
-            Debug.Log("eye");
-        }
 
         if (checkDirection(Vector2.left))
-        {
             desiredDir = new Vector3(desiredDir.x + turningRadius * Time.deltaTime, desiredDir.y, 0);
-            Debug.Log("left");
-        }
 
         if (checkDirection(Vector2.up))
-        {
             desiredDir = new Vector3(desiredDir.x, desiredDir.y - turningRadius * Time.deltaTime, 0);
-            Debug.Log("up");
-        }
 
         if (checkDirection(Vector2.right))
-        {
             desiredDir = new Vector3(desiredDir.x - turningRadius * Time.deltaTime, desiredDir.y, 0);
-            Debug.Log("right");
-        }
 
         if (checkDirection(Vector2.down))
-        {
             desiredDir = new Vector3(desiredDir.x, desiredDir.y + turningRadius * Time.deltaTime, 0);
-            Debug.Log("down");
-        }
     }
     private void normalizeDesiredDir()
     {
