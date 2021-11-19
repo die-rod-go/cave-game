@@ -124,7 +124,7 @@ MonoBehaviour:
   maxDecideTime: 6
   xWeight: 150
   yWeight: 50
-  eyeSight: 2
+  eyeSight: 1
   maxHeight: 2
   tagsToAvoid:
   - Ground

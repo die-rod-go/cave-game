@@ -49,7 +49,6 @@ public class FlyRandom : MonoBehaviour
 
     private void decideToTurn()
     {
-        float changeDirection = Random.Range(0.0f, 1001.0f);
         if (timeSinceLastDecision >= timeToDecide)
             chooseDir();        
     }
@@ -79,7 +78,7 @@ public class FlyRandom : MonoBehaviour
 
     private void move()
     {
-        Vector2 newPos = transform.position + currentDir * speed * Time.deltaTime;
+        Vector2 newPos = transform.position + (currentDir * speed * Time.deltaTime);
         rb.MovePosition(newPos);
     }
 

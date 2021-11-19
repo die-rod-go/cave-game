@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class LightFlicker : MonoBehaviour
 {
-    [Range(0.0f, 5.0f)]
+    [Range(0.0f, 3.0f)]
     public float minBrightness, maxBrightness;
 
-    [Range(0.0f, 5.0f)]
+    [Range(0.0f, 3.0f)]
     public float brightnessVariation; //    how quickly the brightness will change
 
     private Light2D light;
