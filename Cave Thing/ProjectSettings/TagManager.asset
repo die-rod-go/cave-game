@@ -48,6 +48,9 @@ TagManager:
   - name: Background
     uniqueID: 3932225859
     locked: 0
+  - name: Fauna
+    uniqueID: 1205271189
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
