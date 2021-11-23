@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4044060734325530531
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4044060734325530529}
+  - component: {fileID: 4044060734325530530}
+  m_Layer: 0
+  m_Name: Worm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4044060734325530529
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4044060734325530531}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4044060734325530530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4044060734325530531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d5186a3dec7cc74696e3ac9dd450f59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canTunnel:
+  - Ground
+  turnSpeed: 1
+  minSpeed: 2
+  maxSpeed: 7
+  minDistance: 30
+  maxDistance: 5
+  speedRamp: 5
+  turnSpeedRamp: 2.26
+  gravity: 0.5
+  distToGrav: 3.5
+  baitName: Player
+  adjustmentSpeed: 1
+  adjustmentIterations: 15
+  segmentDistance: 0.7
+  threshold: 0
+  headObject: {fileID: 6133230791752348171, guid: eb122dde11e72644a82b812fe1535255, type: 3}
+  bodyObject: {fileID: 3825648419923765009, guid: 89fb2830802b03648bdb92b9c55fa8a5, type: 3}
+  tailObject: {fileID: 599335110308278449, guid: 820e8cabe6748ea4c9352480e8437770, type: 3}
+  minLength: 50
+  maxLength: 100
+  debug: 1

@@ -90,7 +90,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -362741437
-  m_SortingLayer: -1
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -244,7 +244,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 549a6fa8de403dc4da2e2859f21c6080, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.05
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -378,7 +378,7 @@ MonoBehaviour:
   m_Color: {r: 0, g: 0.85490197, b: 1, a: 1}
   m_Intensity: 1
   m_LightVolumeOpacity: 0
-  m_ApplyToSortingLayers: df95df8899298c76430161ea00000000097a7387
+  m_ApplyToSortingLayers: df95df8899298c76430161ea95fad64700000000097a7387
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 0
   m_LightOrder: 0
@@ -388,7 +388,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 0.96
+  m_PointLightOuterRadius: 1.2
   m_PointLightDistance: 3
   m_PointLightQuality: 1
   m_ShapeLightParametricSides: 5
