@@ -165,6 +165,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -174,8 +175,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -1228,6 +1229,54 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      GrassyCaves_40: -4259049389284422958
+      GrassyCaves_28: 8542715705139618850
+      GrassyCaves_39: 6531073552634007276
+      GrassyCaves_35: 708963671263351980
+      GrassyCaves_42: -7144157672776672437
+      GrassyCaves_0: 4729415155477953596
+      GrassyCaves_13: -9222947814235451931
+      GrassyCaves_3: 3873806565806610305
+      GrassyCaves_7: 7759882246551495480
+      GrassyCaves_15: 3109879204618724958
+      GrassyCaves_43: 3252445362194924618
+      GrassyCaves_17: 2584030167341398186
+      GrassyCaves_6: -7633213145298520599
+      GrassyCaves_11: -4750172091077094254
+      GrassyCaves_20: 7323933495223824112
+      GrassyCaves_25: 2875060832976581131
+      GrassyCaves_16: -5642521906380869523
+      GrassyCaves_44: -3003493550410928247
+      GrassyCaves_29: -7049734400358556505
+      GrassyCaves_36: -3264385818720924745
+      GrassyCaves_45: 7798439781961560273
+      GrassyCaves_8: 8824473114464174769
+      GrassyCaves_26: -7058240751268586613
+      GrassyCaves_33: 6511203091421546279
+      GrassyCaves_37: 4457490645446875038
+      GrassyCaves_32: 6160778211765468583
+      GrassyCaves_2: -9144561519637294365
+      GrassyCaves_1: -1797623831613380921
+      GrassyCaves_9: 153202695462409992
+      GrassyCaves_34: -5826241498756959746
+      GrassyCaves_14: -4902929843536344978
+      GrassyCaves_12: -7608276520045850169
+      GrassyCaves_10: 1919799151964675043
+      GrassyCaves_30: 5656920892893885861
+      GrassyCaves_46: -1134200181961970330
+      GrassyCaves_21: 2666786600765032600
+      GrassyCaves_38: 7607431604577820678
+      GrassyCaves_23: -542754024152706976
+      GrassyCaves_41: -1186772956991289523
+      GrassyCaves_24: 7186054060764574054
+      GrassyCaves_22: -9174215222675801009
+      GrassyCaves_4: -8693904843070581932
+      GrassyCaves_5: -1477046228669028299
+      GrassyCaves_19: 1483377712087316731
+      GrassyCaves_27: 8755541879143539731
+      GrassyCaves_31: 4689226636086088033
+      GrassyCaves_18: -732127499092878680
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

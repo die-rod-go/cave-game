@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.Experimental.Rendering.Universal;
+
 using UnityEngine;
 
 public class LightFlicker : MonoBehaviour
@@ -11,11 +11,11 @@ public class LightFlicker : MonoBehaviour
     [Range(0.0f, 3.0f)]
     public float brightnessVariation; //    how quickly the brightness will change
 
-    private Light2D light;
+    private UnityEngine.Rendering.Universal.Light2D light;
 
     private void Awake()
     {
-        light = GetComponent<Light2D>();
+        light = GetComponent<UnityEngine.Rendering.Universal.Light2D>();
     }
 
     // Start is called before the first frame update
