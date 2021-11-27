@@ -25,16 +25,19 @@ public class Worm_AI : MonoBehaviour
     public bool headUnderGround;
 
     private Vector3 prevPos;
+    private Eye_Update update;
     
     // Start is called before the first frame update
     void Start()
     {
         //Application.targetFrameRate = 10;
+        update = transform.Find("Eye").GetComponent<Eye_Update>();
     }
    
     // Update is called once per frame
     void Update()
-    {       
+    {
+        update.bait = bait;
         zeroZPos();
         updateHeadRoation();
         drawDebugLines();

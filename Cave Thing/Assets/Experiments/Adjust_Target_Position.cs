@@ -1,46 +1,61 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System.Linq;
 public class Adjust_Target_Position : MonoBehaviour
 {
-
+    public string[] canWalk;
+    public float adjustmentSpeed = 10.0f;
+    public float minAdjustmentSpeed = 3.0f;
+    public float snapDistance = 10.0f;
     public int raysToShoot = 30;
     public float maxDistance;
+    public float maxError = 0.5f;
     public float eyeSight;
+    public GameObject effector;
+
     private GameObject restingPosition;
-    private Vector3 lastPos;
-    private Vector3 initPos;
+
+    private Vector3 currentPos, lastPos;
 
     // Start is called before the first frame update
     void Start()
     {
         restingPosition = transform.parent.Find("Resting_Position").gameObject;
-        lastPos = getClosest();
-        transform.position = lastPos;
+        currentPos = getClosest();
+        lastPos = currentPos;
+        transform.position = currentPos;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (outOfBounds())
-        {
-            lastPos = getClosest();
-        }
-
-        transform.position = lastPos;
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+        if (outOfBoundsRestingPosition() || outOfBoundsEffector())
+            currentPos = getClosest();
     }
 
-    private bool outOfBounds()
+    void FixedUpdate()
     {
-        return (lastPos - transform.position).magnitude > maxDistance;
+        moveToPosition();
+        //transform.position = currentPos;
+    }
+
+    private bool outOfBoundsEffector()
+    {
+        return (effector.transform.position - transform.position).magnitude > maxError;
+    }
+
+    private bool outOfBoundsRestingPosition()
+    {
+        return (restingPosition.transform.position - transform.position).magnitude > maxDistance;
     }
 
     private Vector3 getClosest()
     {
         Vector3 rest = restingPosition.transform.position;
         float angle = 0;
-        Vector3 closest = lastPos;
+        Vector3 closest = currentPos;
 
         //  shoot rays
         for(int i = 0; i < raysToShoot; i++)
@@ -54,17 +69,43 @@ public class Adjust_Target_Position : MonoBehaviour
             Vector3 directionTo = (dir - rest);
             RaycastHit2D hit = Physics2D.Raycast(rest, directionTo, eyeSight);
 
-            if (hit)
-                Debug.Log("Null");
-
             //  check if closest
-            if ((hit.point - (Vector2)rest).magnitude < (closest - rest).magnitude)
-                closest = hit.point;
+            if (hit)
+            {
+                if ((hit.point - (Vector2)rest).magnitude < (closest - rest).magnitude)
+                {
+                    if (canWalk.Contains(hit.transform.tag))
+                        closest = hit.point;
+                }
+            }
 
             //Debug.DrawLine(rest, directionTo * eyeSight + rest, Color.blue);
-            //Debug.DrawRay(rest, directionTo * eyeSight, Color.blue);
+            Debug.DrawRay(rest, directionTo * maxDistance, Color.blue);
         }
 
         return closest;
+    }
+
+    private void moveToPosition()
+    {
+        if (distanceToCurrentPos() < snapDistance)
+            transform.position = currentPos;
+        else
+        {
+            if(distanceToCurrentPos() < 2)//    magic number
+                transform.Translate(directionTocurrentPos().normalized * adjustmentSpeed * Time.fixedDeltaTime, Space.World);
+            else
+                transform.Translate(directionTocurrentPos() * minAdjustmentSpeed * Time.fixedDeltaTime, Space.World);
+        }
+    }
+
+    private Vector3 directionTocurrentPos()
+    {
+        return currentPos - transform.position;
+    }
+
+    private float distanceToCurrentPos()
+    {
+        return (transform.position - currentPos).magnitude;
     }
 }

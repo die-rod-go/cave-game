@@ -8,7 +8,7 @@ public class Eye_Update : MonoBehaviour
 
     public float eyeOffset;
     public float eyeSpeed;
-    private Worm_AI head;
+    public GameObject bait;
     private Animator animator;
     private Vector3 initialLocalPosition;
 
@@ -16,9 +16,6 @@ public class Eye_Update : MonoBehaviour
     void Start()
     {
         initialLocalPosition = transform.localPosition;
-        head = transform.parent.GetComponent<Worm_AI>();
-        if (head == null)
-            Debug.Log("so no head?");
 
         animator = GetComponent<Animator>();
         if (animator == null)
@@ -28,7 +25,7 @@ public class Eye_Update : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        animator.SetFloat("distBait", head.getDistanceToBait());
+        animator.SetFloat("distBait", distanceToBait());
     }
 
     private void FixedUpdate()
@@ -39,7 +36,17 @@ public class Eye_Update : MonoBehaviour
     private void lookAtPlayer()
     {
         transform.localPosition = initialLocalPosition;
-        Vector3 offset = head.directionToBait() * eyeOffset * eyeSpeed * Time.fixedDeltaTime;
+        Vector3 offset = directionToBait() * eyeOffset * eyeSpeed * Time.fixedDeltaTime;
         transform.Translate(offset, Space.World);
+    }
+
+    private float distanceToBait()
+    {
+        return (bait.transform.position - transform.position).magnitude;
+    }
+
+    private Vector3 directionToBait()
+    {
+        return (bait.transform.position - transform.position).normalized;
     }
 }
