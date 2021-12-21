@@ -4,15 +4,15 @@ using UnityEngine;
 using System.Linq;
 public class Adjust_Target_Position : MonoBehaviour
 {
-    public string[] canWalk;
-    public float adjustmentSpeed = 10.0f;
-    public float minAdjustmentSpeed = 3.0f;
-    public float snapDistance = 10.0f;
-    public int raysToShoot = 30;
-    public float maxDistance;
-    public float maxError = 0.5f;
-    public float eyeSight;
-    public GameObject effector;
+    [SerializeField] private string[] canWalk;
+    [SerializeField] private float adjustmentSpeed = 10.0f;
+    [SerializeField] private float minAdjustmentSpeed = 3.0f;
+    [SerializeField] private float snapDistance = 10.0f;
+    [SerializeField] private int raysToShoot = 30;
+    [SerializeField] private float maxDistance;
+    [SerializeField] private float maxError = 0.5f;
+    [SerializeField] private float eyeSight;
+    [SerializeField] private GameObject effector;
 
     private GameObject restingPosition;
 
