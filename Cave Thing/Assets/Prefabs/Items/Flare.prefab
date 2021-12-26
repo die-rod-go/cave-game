@@ -197,8 +197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ignite: {fileID: 8300000, guid: 5bb79387159e25948b1eef6f03e96b7d, type: 3}
   burn: {fileID: 8300000, guid: 9b904e15f4b0b964ebb26b829b5dd7c6, type: 3}
-  fizzle: {fileID: 0}
-  flicker: {fileID: 2996893334946700833}
+  fizzleName: Flare_Fizzle
 --- !u!82 &7781566523949851832
 AudioSource:
   m_ObjectHideFlags: 0

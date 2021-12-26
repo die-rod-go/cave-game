@@ -2,20 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlareTimer : MonoBehaviour
+public class LightTimer : MonoBehaviour
 {
     [SerializeField] private float burnTime;
     [SerializeField] private float lifeTime;
     private float timeAlive;
 
-    ChangeFlareState changeState;
+    ChangeLightState changeState;
 
     // Start is called before the first frame update
     void OnEnable()
     {
         timeAlive = 0;
         if (changeState == null)
-            changeState = GetComponentInChildren<ChangeFlareState>();
+            changeState = GetComponentInChildren<ChangeLightState>();
     }
 
     // Update is called once per frame
@@ -24,14 +24,14 @@ public class FlareTimer : MonoBehaviour
         timeAlive += Time.deltaTime;
 
         if (timeAlive > burnTime)
-            fizzleFlare();
+            fizzleLight();
         if (timeAlive > lifeTime)
             Destroy(transform.gameObject);
     }
 
-    void fizzleFlare()
+    void fizzleLight()
     {
         changeState.EnableAnimator();
-        changeState.PlayFizzle();
+        changeState.PlayFizzleAnimation();
     }
 }

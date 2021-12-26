@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChangeFlareState : MonoBehaviour
+public class ChangeLightState : MonoBehaviour
 {
     [SerializeField] AudioClip ignite;
     [SerializeField] AudioClip burn;
-    [SerializeField] AudioClip fizzle;
-    [SerializeField] LightFlicker flicker;
+    [SerializeField] string fizzleName;
 
     private AudioSource source;
     private Animator animator;
@@ -23,22 +22,29 @@ public class ChangeFlareState : MonoBehaviour
             animator = GetComponentInChildren<Animator>();
     }
 
-    public void PlayIgnite()
+    public void PlayIgniteSound()
     {
-        source.clip = ignite;
+        if(ignite != null)
+            source.clip = ignite;
     }
 
-    public void PlayBurn()
+    public void PlayBurnSound()
     {
-        source.clip = burn;
-        source.loop = true;
-        source.Play();
+        if (burn != null)
+        {
+            source.clip = burn;
+            source.loop = true;
+            source.Play();
+        }
     }
 
-    public void PlayFizzle()
+    public void PlayFizzleAnimation()
     {
-        EnableAnimator();
-        animator.Play("Flare_Fizzle");
+        if (fizzleName != "")
+        {
+            EnableAnimator();
+            animator.Play(fizzleName);
+        }
     }
 
     public void DisableAnimator()
