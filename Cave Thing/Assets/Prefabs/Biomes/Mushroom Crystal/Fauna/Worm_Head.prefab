@@ -133,8 +133,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1205271189
-  m_SortingLayer: -1
+  m_SortingLayerID: -1761221489
+  m_SortingLayer: -2
   m_SortingOrder: 2
   m_Sprite: {fileID: 2865906195106238846, guid: ce916f93d6be7434295e9f7dd5fafcba, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -312,6 +312,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6133230791752348168}
     m_Modifications:
+    - target: {fileID: 725561359565746941, guid: 10f0d4cfe745c1a47a90ce73a0bd341b, type: 3}
+      propertyPath: m_SortingLayer
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 725561359565746941, guid: 10f0d4cfe745c1a47a90ce73a0bd341b, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1761221489
+      objectReference: {fileID: 0}
     - target: {fileID: 5063550357955069740, guid: 10f0d4cfe745c1a47a90ce73a0bd341b, type: 3}
       propertyPath: m_Name
       value: Eye
